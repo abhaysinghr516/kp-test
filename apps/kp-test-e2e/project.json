@@ -1,0 +1,26 @@
+{
+  "name": "kp-test-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/kp-test-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/kp-test-e2e/cypress.json",
+        "devServerTarget": "kp-test:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "kp-test:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["kp-test"]
+}
